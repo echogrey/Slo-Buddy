@@ -36,7 +36,7 @@ if(config.memory?.enabled&&process.env.BUDDY_BROKER_TOKEN&&process.env.BUDDY_MEM
 
 if(!scheduled&&process.env.BUDDY_MEMORY_CONTEXT&&process.env.BUDDY_BROKER_TOKEN){
  const respond=async(action,args)=>{const r=await fetch('http://127.0.0.1:'+(process.env.BUDDY_CENTER_PORT||config.port)+'/internal/response',{method:'POST',headers:{'Content-Type':'application/json','X-Buddy-Capability':process.env.BUDDY_BROKER_TOKEN},body:JSON.stringify({context:process.env.BUDDY_MEMORY_CONTEXT,action,args}),signal:AbortSignal.timeout(15000)});const v=await r.json();if(!r.ok)throw Error(v.error);return v;};
- tool('send_interactive_card','用卡片表达结果或向当前提问者请求选择/文字输入。发问后结束本轮等待回答，不重复发同样的问题。',{title:z.string().min(1).max(80),body:z.string().min(1).max(6000),choices:z.array(z.string().min(1).max(80)).max(6).default([]),input:z.boolean().default(false)},a=>respond('card',a));
+ tool('send_interactive_card','用卡片表达结果或向当前提问者请求选择/文字输入。发问后结束本轮等待回答，不重复发同样的问题。',{title:z.string().min(1).max(80),body:z.string().min(1).max(6000),choices:z.array(z.string().min(1).max(80)).max(6).default([]),input:z.boolean().default(false),links:z.array(z.object({label:z.string().min(1).max(80),url:z.string().url().max(2000)})).max(3).default([])},a=>respond('card',a));
  tool('report_progress','预测任务较长时先发简短开始提示；实际进入新阶段时可发送进度。不编造百分比或完成情况。画图由画图工具自带提示，不重复调用。',{text:z.string().min(1).max(300)},a=>respond('progress',a));
 }
 if(!scheduled&&process.env.BUDDY_BROWSER_ALLOWED==='true'&&process.env.BUDDY_MEMORY_CONTEXT&&process.env.BUDDY_BROKER_TOKEN){

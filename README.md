@@ -27,7 +27,7 @@ It is a source-based application for people comfortable running a Node.js servic
 | **Personality** | Configure personality, habits, tone, and group rules. Optionally read your local base instructions. |
 | **Memory & knowledge** | Maintain background knowledge and retrieve conversation-scoped facts from local SQLite storage. Let the model request memory updates through controlled tools. |
 | **Images & documents** | Understand supported images and references, generate images when supported by your Codex account, work with authorized Feishu documents, and archive selected group images. |
-| **Interactive responses** | Send formatted messages, cards with choices or text input, real member mentions, and progress updates for longer tasks. |
+| **Interactive responses** | Send formatted messages, cards with choices, text input or HTTPS link buttons, real member mentions, and progress updates for longer tasks. |
 | **Scheduled tasks** | Create, list, pause, resume, and cancel tasks from chat as the paired owner. Run one-off or recurring tasks with time zones, date bounds, read-only AI execution, and conditional notifications. |
 | **Controlled tools** | Grant workspace, document, image-generation, and browser capabilities by conversation type. Restrict resources through allowlists. |
 | **Local operations** | Manage connections and settings in a web console, inspect recent service events, and run the service in the background on macOS. |
